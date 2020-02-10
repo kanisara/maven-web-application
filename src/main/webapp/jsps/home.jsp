@@ -9,7 +9,7 @@
 </head>
 </head>
 <body>
-<h1 align="center">Welcome to CenturyLink Software India [P} Ltd.</h1>
+<h1 align="center">Welcome to CenturyLink SEAL Software India [P} Ltd.</h1>
 <h1 align="center">Very Good Networking center for DevOps with AWS in Coimbatore and also for Job Assitance Job Support also...Teaching Real Time scnerios</h1>
 <hr>
 <div style="text-align: center;">
