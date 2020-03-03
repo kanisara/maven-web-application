@@ -21,7 +21,7 @@ stages:
       displayName: Build an image
       inputs:
         containerRegistry: 'myDocker'
-        repository: 'kanisara'
+        repository: 'kanisara/maven-web-application'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
