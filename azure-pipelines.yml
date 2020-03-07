@@ -8,7 +8,7 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
-- stage: Build
+- stage: Checkout
   displayName: Build image
   jobs:  
   - job: Build
@@ -30,6 +30,35 @@ stages:
     - bash: python --version 
     - bash: mvn -version 
     - bash: ls -R $(Build.ArtifactStagingDirectory)
+
+- stage: MavenBuild
+  displayName: MavenBuild 
+  jobs:  
+  - job: MavenBuild
+    displayName: MavenBuild
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean package'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+
+- stage: DockerImageBuild
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
     - task: Docker@2
       displayName: Build an image
       inputs:
