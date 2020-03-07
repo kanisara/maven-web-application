@@ -80,11 +80,12 @@ stages:
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
-        kubernetesServiceEndpoint: 'minikube'
+        kubernetesServiceEndpoint: 'my-kubernet-connection'
         namespace: 'default'
         command: 'apply'
         useConfigurationFile: true
         configuration: 'deploy.yml'
         secretType: 'dockerRegistry'
-        containerRegistryType: 'Azure Container Registry'
+        containerRegistryType: 'Container Registry'
+        dockerRegistryEndpoint: 'myDocker'
     
